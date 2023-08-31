@@ -24,7 +24,9 @@ jobs:
       run: dotnet build --no-restore --configuration Release
 
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: |
+        ls -la
+        dotnet test --no-build --verbosity normal
     
     - name: Create package
       run: dotnet pack --configuration Release
