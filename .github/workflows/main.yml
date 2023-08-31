@@ -2,12 +2,12 @@ name: Build and Deploy Package to Nuget
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "production", "staging" ]
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    environment: Production
+    environment: ${{ github.ref == 'refs/heads/production' && 'Production' || 'Staging' }}
 
     steps:
     - uses: actions/checkout@v3
