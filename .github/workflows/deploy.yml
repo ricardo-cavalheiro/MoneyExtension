@@ -18,7 +18,9 @@ jobs:
           name: package
 
       - name: Create package
-        run: dotnet pack --configuration Release
+        run: |
+          ls /home/runner/work/MoneyExtension/MoneyExtension -la
+          dotnet pack --configuration Release
 
       - name: Publish
         run: dotnet nuget push "./MoneyExtension/bin/Release/*.nupkg" -k ${{ secrets.NUGET_TOKEN }} -s https://api.nuget.org/v3/index.json
