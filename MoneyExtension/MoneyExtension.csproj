@@ -4,6 +4,13 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>Money Extensions</Title>
+    <PackageProjectUrl>https://github.com/ricardo-passos/MoneyExtension</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ricardo-passos/MoneyExtension</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>money;int;decimal;convert</PackageTags>
+    <Description>Extension to convert decimal to integer</Description>
   </PropertyGroup>
 
 </Project>
