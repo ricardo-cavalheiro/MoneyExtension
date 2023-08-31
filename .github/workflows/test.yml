@@ -1,13 +1,28 @@
+name: Test
+
 on:
   workflow_call:
+    outputs:
+      package-path:
+        description: 'Path to the build .NET package'
+        value: ${{ jobs.Test.outputs.package-path }}
 
 jobs:
   Test:
     runs-on: ubuntu-latest
     environment: Staging
 
+    outputs:
+      package-path: ${{ steps.path.outputs.package-path }}
+
     steps:
       - uses: actions/checkout@v3
 
       - name: Test
         run: dotnet test --verbosity normal
+
+      - name: Set package path
+        id: path
+        run: |
+          PACKAGE_PATH=/home/runner/work/MoneyExtension/MoneyExtension/MoneyExtension/bin/Release/net6.0/
+          echo "::set-output name=package-path::$PACKAGE_PATH"
