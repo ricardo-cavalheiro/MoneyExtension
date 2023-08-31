@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: Print Package Path
         run: |
-          ls ${{ inputs.package-path }}
+          find /home/runner/work -maxdepth 2 -type d -ls
 
       - name: Create package
         run: dotnet pack --configuration Release
