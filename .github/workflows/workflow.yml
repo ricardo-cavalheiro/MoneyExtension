@@ -9,16 +9,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: ./.github/workflows/actions/staging/build/action.yml
+      - uses: ./.github/workflows/build.yml
   Test:
     runs-on: ubuntu-latest
     needs: Build
     steps:
       - uses: actions/checkout@v3
-      - uses: ./.github/workflows/actions/staging/test/action.yml
+      - uses: ./.github/workflows/test.yml
   Deploy:
     runs-on: ubuntu-latest
     needs: Test
     steps:
       - uses: actions/checkout@v3
-      - uses: ./.github/workflows/actions/staging/deploy/.action.yml
+      - uses: ./.github/workflows/deploy.yml
