@@ -2,14 +2,16 @@ name: Build, Test and Deploy Package - Staging
 
 on:
   push:
-    branches: [ "staging" ]
+    branches: [ "staging", "production" ]
 
 jobs:
   Build:
-    uses: ./.github/workflows/build.yml
-  Test:
-    needs: Build
-    uses: ./.github/workflows/test.yml
-  Deploy:
-    needs: Test
-    uses: ./.github/workflows/deploy.yml
+    runs-on: ubuntu-latest
+    environment: Staging
+
+    steps:
+      - uses: ./.github/workflows/build.yml
+
+      - uses: ./.github/workflows/test.yml
+
+      - uses: ./.github/workflows/deploy.yml
