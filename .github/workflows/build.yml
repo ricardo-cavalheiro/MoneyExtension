@@ -21,6 +21,11 @@ jobs:
 
       - name: Build
         id: build
-        run: |
-          dotnet build --no-restore --configuration Release
-          ls -la
+        run: dotnet build --no-restore --configuration Release
+
+      - uses: actions/upload-artifact@v3
+        name: Upload
+        with:
+          name: package
+          path: /home/runner/work/MoneyExtension/MoneyExtension/MoneyExtension/bin/Release/*.nupkg
+        
