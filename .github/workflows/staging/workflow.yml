@@ -1,0 +1,18 @@
+name: Build, Test and Deploy Package - Staging
+
+on:
+  push:
+    branches: [ "staging" ]
+
+jobs:
+  Build:
+    steps:
+      - uses: ./.github/workflow/common/build.yml
+  Test:
+    needs: Build
+    steps:
+      - uses: ./.github/workflow/common/test.yml
+  Deploy:
+    needs: Test
+    steps:
+      - uses: ./.github/workflow/common/deploy.yml
