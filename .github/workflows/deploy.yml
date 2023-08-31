@@ -15,9 +15,7 @@ jobs:
     steps:
       - name: Print Package Path
         run: |
-          echo ${{ inputs.package-path }}
-          echo $PACKAGE_PATH
-          echo $GITHUB_OUTPUT
+          ls ${{ inputs.package-path }}
 
       - name: Create package
         run: dotnet pack --configuration Release
