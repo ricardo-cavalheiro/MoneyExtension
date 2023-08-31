@@ -1,4 +1,4 @@
-name: Build and Deploy Package
+name: Build and Deploy Package to Nuget
 
 on:
   push:
@@ -8,6 +8,7 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    environment: Production
 
     steps:
     - uses: actions/checkout@v3
@@ -24,9 +25,7 @@ jobs:
       run: dotnet build --no-restore --configuration Release
 
     - name: Test
-      run: |
-        ls -la
-        dotnet test --verbosity normal
+      run: dotnet test --verbosity normal
     
     - name: Create package
       run: dotnet pack --configuration Release
