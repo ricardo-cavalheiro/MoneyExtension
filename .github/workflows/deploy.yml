@@ -13,6 +13,12 @@ jobs:
     environment: Staging
     
     steps:
+      - name: Print Package Path
+        run: |
+          echo ${{ inputs.package-path }}
+          echo $PACKAGE_PATH
+          echo $GITHUB_OUTPUT
+
       - name: Create package
         run: dotnet pack --configuration Release
 
