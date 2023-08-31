@@ -1,0 +1,11 @@
+on:
+  workflow_call:
+
+jobs:
+  Test:
+    runs-on: ubuntu-latest
+    environment: Staging
+
+    steps:
+      - name: Test
+        run: dotnet test --verbosity normal

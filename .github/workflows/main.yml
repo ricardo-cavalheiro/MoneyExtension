@@ -3,7 +3,6 @@ name: Build and Deploy Package to Nuget
 on:
   push:
     branches: [ "master" ]
-  
 
 jobs:
   build-and-deploy:
