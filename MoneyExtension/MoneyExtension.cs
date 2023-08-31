@@ -10,7 +10,7 @@ public static class Money
 
     if (string.IsNullOrEmpty(text)) return 0;
 
-    bool _ = int.TryParse(text, out var result);
+    int.TryParse(text, out var result);
 
     return result;
   }
