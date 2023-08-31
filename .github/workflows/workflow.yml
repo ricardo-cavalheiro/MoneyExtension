@@ -6,12 +6,12 @@ on:
 
 jobs:
   Build:
-    runs-on: ubuntu-latest
-    environment: Staging
-
-    steps:
-      - uses: ./.github/workflows/build.yml
-
-      - uses: ./.github/workflows/test.yml
-
-      - uses: ./.github/workflows/deploy.yml
+    uses: ./.github/workflows/build.yml
+  Test:
+    needs: Build
+    uses: ./.github/workflows/test.yml
+  Deploy:
+    needs: Test
+    uses: ./.github/workflows/deploy.yml
+    with:
+      package-path: ${{ needs.Test.outputs.package-path }}
