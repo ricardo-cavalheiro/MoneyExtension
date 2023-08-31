@@ -21,4 +21,6 @@ jobs:
 
       - name: Build
         id: build
-        run: dotnet build --no-restore --configuration Release
+        run: |
+          dotnet build --no-restore --configuration Release
+          ls -la
