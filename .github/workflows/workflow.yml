@@ -6,16 +6,16 @@ on:
 
 jobs:
   Build:
-    runs-on: ubuntu-lastest
+    runs-on: ubuntu-latest
     steps:
       - uses: ./.github/workflow/common/build.yml
   Test:
-    runs-on: ubuntu-lastest
+    runs-on: ubuntu-latest
     needs: Build
     steps:
       - uses: ./.github/workflow/common/test.yml
   Deploy:
-    runs-on: ubuntu-lastest
+    runs-on: ubuntu-latest
     needs: Test
     steps:
       - uses: ./.github/workflow/common/deploy.yml
