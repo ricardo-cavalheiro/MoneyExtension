@@ -24,5 +24,4 @@ jobs:
       - name: Set package path
         id: path
         run: |
-          PACKAGE_PATH=/home/runner/work/MoneyExtension/MoneyExtension/MoneyExtension/bin/Release/net6.0/
-          echo "::set-output name=package-path::$PACKAGE_PATH"
+          echo "package-path=home/runner/work/MoneyExtension/MoneyExtension/MoneyExtension/bin/Release/net6.0/" >> $GITHUB_OUTPUT
