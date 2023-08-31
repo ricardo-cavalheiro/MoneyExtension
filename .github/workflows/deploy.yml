@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: Print Package Path
         run: |
-          find /home/runner/work/MoneyExtension/MoneyExtension -maxdepth 2 -type d -ls
+          ls /home/runner/work/MoneyExtension/MoneyExtension
 
       - name: Create package
         run: dotnet pack --configuration Release
