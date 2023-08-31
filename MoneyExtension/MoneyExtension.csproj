@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -11,6 +11,8 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>money;int;decimal;convert</PackageTags>
     <Description>Extension to convert decimal to integer</Description>
+	<PackageId>CF7BFCC9-20E8-4E58-8A48-77748D792B74</PackageId>
+	<Version>1.0.1</Version>
   </PropertyGroup>
 
 </Project>
