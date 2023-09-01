@@ -1,13 +1,13 @@
-name: Build and Deploy Package to Nuget
+name: Build, Test and Deploy Package to Nuget
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "production", "staging" ]
 
 jobs:
-  build-and-deploy:
+  build-test-deploy:
     runs-on: ubuntu-latest
-    environment: Production
+    environment: ${{ github.ref == 'refs/heads/production' && 'Production' || 'Staging' }}
 
     steps:
     - uses: actions/checkout@v3
@@ -21,13 +21,10 @@ jobs:
       run: dotnet restore
 
     - name: Build
-      run: dotnet build --no-restore --configuration Release
+      run: dotnet build --no-restore --configuration Release -p:PackageId=${{ vars.PACKAGE_ID }}
 
     - name: Test
       run: dotnet test --verbosity normal
-    
-    - name: Create package
-      run: dotnet pack --configuration Release
 
     - name: Publish
-      run: dotnet nuget push "./MoneyExtension/bin/Release/*.nupkg" -k ${{ secrets.NUGET_TOKEN }} -s https://api.nuget.org/v3/index.json
+      run: dotnet nuget push "./MoneyExtension/bin/Release/${{ vars.PACKAGE_ID }}.*.nupkg" -k ${{ secrets.NUGET_TOKEN }} -s https://api.nuget.org/v3/index.json --skip-duplicate
