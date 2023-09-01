@@ -1,11 +1,11 @@
-name: Build and Deploy Package to Nuget
+name: Build, Test and Deploy Package to Nuget
 
 on:
   push:
     branches: [ "production", "staging" ]
 
 jobs:
-  build-and-deploy:
+  build-test-deploy:
     runs-on: ubuntu-latest
     environment: ${{ github.ref == 'refs/heads/production' && 'Production' || 'Staging' }}
 
