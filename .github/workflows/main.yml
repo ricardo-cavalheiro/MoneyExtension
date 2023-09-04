@@ -7,11 +7,15 @@ on:
 jobs:
   build-test-deploy:
     runs-on: ubuntu-latest
+
     environment: 
       name: ${{ github.ref == 'refs/heads/production' && 'Production' || 'Staging' }}
-      url: ${{ 'https://www.nuget.org/packages/' && vars.PACKAGE_ID }}
+      url: ${{ env.URL }}
 
     steps:
+    - name: Set environment variable
+      run: echo "URL=https://www.nuget.org/packages/${{ vars.PACKAGE_ID }}" >> $GITHUB_ENV
+
     - uses: actions/checkout@v3
 
     - name: Setup .NET
