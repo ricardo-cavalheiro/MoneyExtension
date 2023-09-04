@@ -9,10 +9,13 @@ jobs:
     runs-on: ubuntu-latest
 
     environment: 
-      name: ${{ github.ref == 'refs/heads/production' && 'Production' || 'Staging' }}
+      name: ${{ github.ref_name == 'production' && 'Production' || 'Staging' }}
       url: ${{ env.URL }}
 
     steps:
+    - name: Github Ref
+      run: echo ${{ github.ref_name }}
+
     - name: Set environment variable
       run: echo "URL=https://www.nuget.org/packages/${{ vars.PACKAGE_ID }}" >> $GITHUB_ENV
 
