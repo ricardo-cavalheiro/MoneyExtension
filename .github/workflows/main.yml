@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: 
       name: ${{ github.ref == 'refs/heads/production' && 'Production' || 'Staging' }}
-      url: 'test'
+      url: ${{ 'https://www.nuget.org/packages/' && vars.PACKAGE_ID }}
 
     steps:
     - uses: actions/checkout@v3
