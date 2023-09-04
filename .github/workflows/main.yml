@@ -7,7 +7,9 @@ on:
 jobs:
   build-test-deploy:
     runs-on: ubuntu-latest
-    environment: ${{ github.ref == 'refs/heads/production' && 'Production' || 'Staging' }}
+    environment: 
+      name: ${{ github.ref == 'refs/heads/production' && 'Production' || 'Staging' }}
+      url: 'test'
 
     steps:
     - uses: actions/checkout@v3
